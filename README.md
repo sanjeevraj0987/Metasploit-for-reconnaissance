@@ -47,20 +47,24 @@ Metasploit has a multitude of scanning modules built in. If we open another term
 ## OUTPUT:
 ![244914146-99aca0dd-3fd0-4380-904c-773475effa74](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/4a0be091-e2c6-44b9-b88b-48b097057513)
 Search is a powerful command in Metasploit that you can use to find what you want to locate. msf >search name:Microsoft type:exploit
+![244914160-616d4518-88b6-4b8f-80eb-c0c6e16df08a](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/3423610a-b088-4c4f-a26e-fe05a39700db)
+The info command provides information regarding a module or platform
+## OUTPUT:
+![244914190-09a5a034-e2b2-4100-a600-2994f2892c99](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/a65b5575-376f-4aa6-a697-2946ae5c6884)
+Before beginning, set up the Metasploit database by starting the PostgreSQL server and initialize msfconsole database as follows: systemctl start postgresql msfdb init ##MYSQL ENUMERATION Find the IP address of the Metasploitable machine first. Then, use the db_nmap command in msfconsole with Nmap flags to scan the MySQL database at 3306 port. db_nmap -sV -sC -p 3306 <metasploitable_ip_address>
+![244914204-4357ed6f-62a5-4adb-ad5c-fee8dffdfd7b](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/d66508d9-ec51-4040-9c14-dfce8fcb019d)
+Use the search option to look for an auxiliary module to scan and enumerate the MySQL database. search type:auxiliary mysql
+![244914215-5dd2edca-fd00-45b3-956e-8dd5fe41465a](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/8e937214-69e3-4f99-8b20-4cad8e710cec)
+use the auxiliary/scanner/mysql/mysql_version module by typing the module name or associated number to scan MySQL version details. use 11 Or: use auxiliary/scanner/mysql/mysql_version
+![244914222-8f9525da-1a5b-4498-8f41-8ef701adb2d9](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/19b0ca87-95e8-4b63-b8b6-a538732a5100)
+Use the set rhosts command to set the parameter and run the module, as follows:
+![244914227-57882379-ea28-4349-a3dc-ecea7bb10dea](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/ef6b13d6-fb44-4bea-ab03-adfdcc6ec2ae)
+After scanning, you can also brute force MySQL root account via Metasploit's auxiliary(scanner/mysql/mysql_login) module.
 
+![244914264-7234a9cb-8baf-485c-b743-f6c6250dded8](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/d80ed536-c400-4163-8f3d-4d16657c1a23)
+set the PASS_FILE parameter to the wordlist path available inside /usr/share/wordlists: set PASS_FILE /usr/share/wordlistss/rockyou.txt Then, specify the IP address of the target machine with the RHOSTS command. set RHOSTS Set BLANK_PASSWORDS to true in case there is no password set for the root account. set BLANK_PASSWORDS true
 
-
-https://user-images.githubusercontent.com/121148715/244914190-09a5a034-e2b2-4100-a600-2994f2892c99.png
-
-
-
-
-
-
-
-
-
-
+![244914270-752e39b3-a594-4e46-b60e-1bb7a0ff9d5d](https://github.com/sanjeevraj0987/Metasploit-for-reconnaissance/assets/120698946/c793c641-49bd-42db-938d-181ad8ae3757)
 
 ## RESULT:
 The Metasploit framework for reconnaissance is  examined successfully
